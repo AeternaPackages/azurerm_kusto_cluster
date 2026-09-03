@@ -21,18 +21,18 @@ locals {
 }
 
 module "kusto_clusters" {
-  source         = "git::https://github.com/AeternaModules/azurerm_kusto_cluster.git?ref=v5.0.0"
+  source         = "git::https://github.com/AeternaModules/azurerm_kusto_cluster.git?ref=v5.0.1"
   kusto_clusters = local.kusto_clusters
 }
 
 module "kusto_attached_database_configurations" {
-  source                                 = "git::https://github.com/AeternaModules/azurerm_kusto_attached_database_configuration.git?ref=v5.0.0"
+  source                                 = "git::https://github.com/AeternaModules/azurerm_kusto_attached_database_configuration.git?ref=v5.0.1"
   kusto_attached_database_configurations = local.kusto_attached_database_configurations
   depends_on                             = [module.kusto_clusters]
 }
 
 module "kusto_cluster_customer_managed_keys" {
-  source                              = "git::https://github.com/AeternaModules/azurerm_kusto_cluster_customer_managed_key.git?ref=v5.0.0"
+  source                              = "git::https://github.com/AeternaModules/azurerm_kusto_cluster_customer_managed_key.git?ref=v5.0.1"
   kusto_cluster_customer_managed_keys = local.kusto_cluster_customer_managed_keys
   depends_on                          = [module.kusto_clusters]
 }
